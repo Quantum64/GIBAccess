@@ -39,7 +39,7 @@ Request
 Endpoint http://gibrest.bridgebase.com/u_bm/robot.php
 sc: Unknown function (tp in arcade)
 pov: Bot point of view (N, S, E, W)
-d: Declarer (N for arcade bu can be any direction)
+d: Declarer (N for arcade but can be any direction)
 v: Unknown function (usually just -)
 s: Hand of south (card letters or numbesr seperated by "." for suits in this order: spades, hearts, diamonds, clubs [real ex. akq86.ak3.4.ak63])
 w: Hand of west
