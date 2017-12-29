@@ -37,6 +37,18 @@ Bidding and playing bot aka GIB
 ===
 Request
 Endpoint http://gibrest.bridgebase.com/u_bm/robot.php
-Bid Mode
+sc: Unknown function (tp in arcade)
+pov: Bot point of view (N, S, E, W)
+d: Declarer (N for arcade bu can be any direction)
+v: Unknown function (usually just -)
+s: Hand of south (card letters or numbesr seperated by "." for suits in this order: spades, hearts, diamonds, clubs [real ex. akq86.ak3.4.ak63])
+w: Hand of west
+n: Hand of north
+e: Hand of east
+h: All bids, followed by all played cards (ex. p-p-1s-2n-p-p-p-Dk-D3) first card after 3 bid passes
 
+Response
+<sc_bm [all params from above plus as follows - I have no idea what these mean]  o="" bm="n" ac="n" rc="0" c="y">
+    <r type="<play or bid, depending>" card="<card, only present if play>" bid="<bid, only present if bid>"/>
+</sc_bm>
 ```
