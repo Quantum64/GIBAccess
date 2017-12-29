@@ -34,6 +34,7 @@ XML
 </sc_deals>
 
 Bidding and playing bot aka GIB
+===
 Request
 Endpoint http://gibrest.bridgebase.com/u_bm/robot.php
 Bid Mode
