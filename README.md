@@ -41,7 +41,7 @@ sc: Unknown function (tp in arcade)
 pov: Bot point of view (N, S, E, W)
 d: Declarer (N for arcade but can be any direction)
 v: Unknown function (usually just -)
-s: Hand of south (card letters or numbesr seperated by "." for suits in this order: spades, hearts, diamonds, clubs [real ex. akq86.ak3.4.ak63])
+s: Hand of south (card letters or numbesr seperated by "." for suits in this order: spades, hearts, diamonds, clubs [real ex. akq86.ak3.4.ak63] use t for 10)
 w: Hand of west
 n: Hand of north
 e: Hand of east
