@@ -210,7 +210,7 @@ function callGIB() {
     } else if (dealer == "east") {
         d = "E"
     }
-    var request = "http://gibrest.bridgebase.com/u_bm/robot.php?sc=" + sc + "&pov=" + pov + "&d=" + d + "&v=-&" + currentCards + currentBid
+    var request = "https://gibrest.bridgebase.com/u_bm/robot.php?sc=" + sc + "&pov=" + pov + "&d=" + d + "&v=-&" + currentCards + currentBid
     console.log(request)
     httpGet(request, (responseText) => {
         var bid = "p"
