@@ -1,0 +1,102 @@
+.bid {
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 5px 5px 5px 5px;
+  height: 130px;
+}
+
+.bidbox {
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 5px 5px 5px 5px;
+  padding: 5px 5px 5px 5px;
+}
+
+.cards-side {
+  position: absolute;
+  margin-left: 4.3%;
+  margin-top: 35px;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+.bid-side {
+  position: absolute;
+  margin-left: -3.3%;
+  margin-top: 45px;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+.bid-side-w {
+  position: absolute;
+  margin-left: -3.5%;
+  margin-top: 45px;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+.bid-side-s {
+  position: absolute;
+  margin-left: -3.8%;
+  margin-top: 45px;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+.bidbox-row {}
+
+.padtop {
+  padding-top: 20px;
+}
+
+h5 {
+  margin-top: -30px;
+  margin-bottom: 20px;
+}
+
+.extrawidth {
+  width: 120%;
+}
+
+.cardtile {}
+
+.s13ths, .m13ths, .l13ths, .xl13ths {
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+
+.row .col.s13ths {
+  width: 7.68%;
+}
+
+@media only screen and (min-width: 601px) {
+  .row .col.m13ths {
+    width: 7.68%;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .row .col.l13ths {
+    width: 7.68%;
+  }
+}
+
+@media only screen and (min-width: 1201px) {
+  .row .col.xl13ths {
+    width: 7.68%;
+  }
+}

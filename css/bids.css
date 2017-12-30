@@ -1,0 +1,436 @@
+@font-face {
+  font-family: "Cards";
+  src: url("../fonts/cards.ttf") format("truetype");
+}
+
+
+/*
+ * Bid blocks
+ */
+
+.bidtile {}
+
+.bid-slot {
+  position: absolute;
+  border-radius: 17px;
+  border: 2px solid #747473;
+  background: transparent;
+  padding-left: 10px;
+  width: 85px;
+  height: 85px;
+}
+
+.bid-clubs {
+  border-radius: 17px;
+  border: 2px solid #747473;
+  background: #DDDEDF;
+  padding-left: 10px;
+  width: 85px;
+  height: 85px;
+}
+
+.bid-diamonds {
+  border-radius: 17px;
+  border: 2px solid #EB9100;
+  background: #FAD397;
+  padding-left: 10px;
+  width: 85px;
+  height: 85px;
+}
+
+.bid-hearts {
+  border-radius: 17px;
+  border: 2px solid #D62D21;
+  background: #FAAFAD;
+  padding-left: 10px;
+  width: 85px;
+  height: 85px;
+}
+
+.bid-spades {
+  border-radius: 17px;
+  border: 2px solid #000000;
+  background: #B6B6B6;
+  padding-left: 10px;
+  width: 85px;
+  height: 85px;
+}
+
+.bid-notrump {
+  border-radius: 17px;
+  border: 2px solid #5F8595;
+  background: #BFD3D6;
+  padding-left: 10px;
+  width: 85px;
+  height: 85px;
+}
+
+.bid-pass {
+  position: absolute;
+  border-radius: 17px;
+  border: 2px solid #3E6317;
+  background: #639E27;
+  padding-left: 10px;
+  width: 85px;
+  height: 85px;
+}
+
+.bid-x {
+  position: absolute;
+  border-radius: 17px;
+  border: 2px solid #5B2D15;
+  background: #8A3313;
+  padding-left: 10px;
+  width: 85px;
+  height: 85px;
+}
+
+.bid-xx {
+  position: absolute;
+  border-radius: 17px;
+  border: 2px solid #38533B;
+  background: #4B6C59;
+  padding-left: 10px;
+  width: 85px;
+  height: 85px;
+}
+
+.bid-dummy {
+  border-radius: 17px;
+  border: 2px solid transparent;
+  background: transparent;
+  padding-left: 10px;
+  width: 85px;
+  height: 85px;
+}
+
+
+/*
+ * Bid symbols
+ */
+
+.bid-clubs-symbol:after {
+  height: 1px;
+  font-size: 50px;
+  margin-left: -5px;
+  color: #747473;
+  content: "\2663";
+}
+
+.bid-diamonds-symbol:after {
+  height: 1px;
+  font-size: 50px;
+  margin-left: -5px;
+  color: #EB9100;
+  content: "\2666";
+}
+
+.bid-hearts-symbol:after {
+  height: 1px;
+  font-size: 50px;
+  margin-left: -5px;
+  color: #D62D21;
+  content: "\2665";
+}
+
+.bid-spades-symbol:after {
+  height: 1px;
+  font-size: 50px;
+  margin-left: -5px;
+  color: #000000;
+  content: "\2660";
+}
+
+.bid-notrump-symbol:after {
+  height: 1px;
+  font-size: 25px;
+  margin-left: -5px;
+  color: #5F8595;
+  content: "NT";
+}
+
+.bid-pass-symbol:after {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #3E6317;
+  content: "P";
+}
+
+.bid-x-symbol:after {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #5B2D15;
+  content: "X";
+}
+
+.bid-xx-symbol:after {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #38533B;
+  content: "XX";
+}
+
+
+/*
+ * Bid numbers
+ */
+
+
+/* Clubs */
+
+.bid-clubs-1:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #747473;
+  content: "1";
+}
+
+.bid-clubs-2:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #747473;
+  content: "2";
+}
+
+.bid-clubs-3:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #747473;
+  content: "3";
+}
+
+.bid-clubs-4:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #747473;
+  content: "4";
+}
+
+.bid-clubs-5:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #747473;
+  content: "5";
+}
+
+.bid-clubs-6:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #747473;
+  content: "6";
+}
+
+.bid-clubs-7:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #747473;
+  content: "7";
+}
+
+
+/* Diamonds */
+
+.bid-diamonds-1:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #EB9100;
+  content: "1";
+}
+
+.bid-diamonds-2:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #EB9100;
+  content: "2";
+}
+
+.bid-diamonds-3:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #EB9100;
+  content: "3";
+}
+
+.bid-diamonds-4:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #EB9100;
+  content: "4";
+}
+
+.bid-diamonds-5:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #EB9100;
+  content: "5";
+}
+
+.bid-diamonds-6:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #EB9100;
+  content: "6";
+}
+
+.bid-diamonds-7:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #EB9100;
+  content: "7";
+}
+
+
+/* Hearts */
+
+.bid-hearts-1:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #D62D21;
+  content: "1";
+}
+
+.bid-hearts-2:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #D62D21;
+  content: "2";
+}
+
+.bid-hearts-3:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #D62D21;
+  content: "3";
+}
+
+.bid-hearts-4:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #D62D21;
+  content: "4";
+}
+
+.bid-hearts-5:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #D62D21;
+  content: "5";
+}
+
+.bid-hearts-6:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #D62D21;
+  content: "6";
+}
+
+.bid-hearts-7:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #D62D21;
+  content: "7";
+}
+
+
+/* Spades */
+
+.bid-spades-1:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #000000;
+  content: "1";
+}
+
+.bid-spades-2:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #000000;
+  content: "2";
+}
+
+.bid-spades-3:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #000000;
+  content: "3";
+}
+
+.bid-spades-4:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #000000;
+  content: "4";
+}
+
+.bid-spades-5:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #000000;
+  content: "5";
+}
+
+.bid-spades-6:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #000000;
+  content: "6";
+}
+
+.bid-spades-7:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #000000;
+  content: "7";
+}
+
+
+/* Notrump */
+
+.bid-notrump-1:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #5F8595;
+  content: "1";
+}
+
+.bid-notrump-2:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #5F8595;
+  content: "2";
+}
+
+.bid-notrump-3:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #5F8595;
+  content: "3";
+}
+
+.bid-notrump-4:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #5F8595;
+  content: "4";
+}
+
+.bid-notrump-5:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #5F8595;
+  content: "5";
+}
+
+.bid-notrump-6:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #5F8595;
+  content: "6";
+}
+
+.bid-notrump-7:before {
+  font-size: 50px;
+  font-family: "Cards";
+  color: #5F8595;
+  content: "7";
+}
