@@ -10,6 +10,10 @@
 
 .bidtile {}
 
+.selecttile {
+  margin-top: 10px;
+}
+
 .bid-slot {
   position: absolute;
   border-radius: 17px;

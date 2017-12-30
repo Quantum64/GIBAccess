@@ -15,21 +15,21 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.3/lib/draggable.bundle.js"></script>
   <script src="js/bidding.js"></script>
+  <script src="js/modal.js"></script>
 
   <nav class="nav-extended">
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">GIB Access</a>
       <a href="#" data-activates="mobile-slidebar" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <!-- Transition to modals-->
-        <li><a href="donate.html">Donate</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a class="modal-trigger" href="#donate">Donate</a></li>
+        <li><a class="modal-trigger" href="#about">About</a></li>
+        <li><a class="modal-trigger" href="#disclaimer">Disclaimer</a></li>
       </ul>
       <ul class="side-nav" id="mobile-slidebar">
-        <li><a href="donate.html">Donate</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a class="modal-trigger" href="#donate">Donate</a></li>
+        <li><a class="modal-trigger" href="#about">About</a></li>
+        <li><a class="modal-trigger" href="#disclaimer">Disclaimer</a></li>
       </ul>
     </div>
     <div class="nav-content">
@@ -45,7 +45,10 @@
     <div id="gibbid" class="col s12">
       <div>
         <h1 class="center-align">Select Hands</h1>
-        <h5 class="center-align">Drag n' Drop!</h5>
+        <h5 class="center-align headmargin">Drag n' Drop!</h5>
+        <div class="center-align">
+          <a class="buttonmargin waves-effect waves-light btn" onclick="randomCards()">Randomize</a>
+        </div>
       </div>
       <div id="bidding-cardbox">
         <div class="row">
@@ -55,7 +58,7 @@
             </div>
           </div>
           <div class="col s10">
-            <div class="playingCards bid padtop">
+            <div class="playingCards faceImages faceImages bid padtop">
               <div id="bidding-n" class="row">
                 <div class="col s1 s13ths">
                   <div id="bidding-c2" class="cardtile card rank-2 clubs"><span class="rank">2</span><span class="suit">&clubs;</span></div>
@@ -107,7 +110,7 @@
             </div>
           </div>
           <div class="col s10">
-            <div class="playingCards bid padtop">
+            <div class="playingCards faceImages bid padtop">
               <div id="bidding-e" class="row">
                 <div class="col s1 s13ths">
                   <div id="bidding-d2" class="cardtile card rank-2 diams"><span class="rank">2</span><span class="suit">&diams;</span></div>
@@ -159,7 +162,7 @@
             </div>
           </div>
           <div class="col s10">
-            <div class="playingCards bid padtop">
+            <div class="playingCards faceImages bid padtop">
               <div id="bidding-s" class="row">
                 <div class="col s1 s13ths">
                   <div id="bidding-h2" class="cardtile card rank-2 hearts"><span class="rank">2</span><span class="suit">&hearts;</span></div>
@@ -211,7 +214,7 @@
             </div>
           </div>
           <div class="col s10">
-            <div class="playingCards bid padtop">
+            <div class="playingCards faceImages bid padtop">
               <div id="bidding-w" class="row">
                 <div class="col s1 s13ths">
                   <div id="bidding-s2" class="cardtile card rank-2 spades"><span class="rank">2</span><span class="suit">&spades;</span></div>
@@ -259,7 +262,7 @@
       </div>
       <div>
         <h1 class="center-align">Select Bids</h1>
-        <h5 class="center-align">Drag n' Drop!</h5>
+        <h5 class="center-align headmargin">Drag n' Drop!</h5>
       </div>
       <div class="row">
         <div class="col s1"></div>
@@ -384,6 +387,27 @@
                 </div>
               </div>
             </div>
+
+
+            <div class="col s12">
+              <div class="center-align">
+                <h5 id="bidding-error" class="error"></h5>
+                <h5 id="bidding-warning" class="warning"></h5>
+                <div class="row">
+                  <div class="col s7">
+                    <h2 id="bidding-bid" class=""></h2>
+                  </div>
+                  <div class="col s1">
+                    <div id="bidding-selection"> </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <h5 id="bidding-meaning" class=""></h5>
+                </div>
+              </div>
+            </div>
+
+
           </div>
         </div>
         <div class="col s0"></div>
@@ -558,12 +582,55 @@
           </div>
         </div>
       </div>
-      <div id="gibplay" class="col s12">GIB Playing</div>
-      <div id="meaning" class="col s12">Bid Meanings</div>
-      <div id="dealer" class="col s12">Dealer</div>
+    </div>
+    <div id="gibplay" class="col s12">Coming soon: Simulate how GIB would play a hand</div>
+    <div id="meaning" class="col s12">Coming soon: See the meanings provided for a sequence of bids</div>
+    <div id="dealer" class="col s12">GIB's API has some dealing functions. I could add them...</div>
+  </div>
+  <div id="disclaimer" class="modal">
+    <div class="modal-content">
+      <h4>Liability Disclaimer</h4>
+      <p>
+        This website has absolutely no affiliation with Bridge Base Online, Inc or On Time Systems Incorporated. This website does not violate the terms of service of Bridge Base Online, Inc or On Time Systems Incorporated. This website only utilizes public facing
+        APIs that your computer uses in the exact same way during every Bridge Base Online game. None of the APIs utilized by this website require any additional authorization.
+        <br><br> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+        COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+      </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
     </div>
   </div>
-
+  <div id="about" class="modal">
+    <div class="modal-content">
+      <h4>About</h4>
+      <p>
+        This is a website that utilizes an open GIB rest API that is also used by the Bridge Base Online arcade gamemode. Currently it can simulate hand bidding situations, so GIB’s bidding behavior can be studied more easily which helps us improve it. This website
+        will eventually be able to simulate how GIB would play a hand of cards given the bids ahead of time, though I find this less useful and it is much more complicated to implement. GIB also has APIs for providing bid meanings and dealing cards, which
+        I may add support for eventually.
+      </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
+  <div id="donate" class="modal">
+    <div class="modal-content">
+      <h4>Donate</h4>
+      <p>
+        Like this website? Want to support me programming free things for the community? I love working on open source software (like the website that you’re using right now), and want to dedicate as much time to it as possible, so if you feel like helping me
+        with that, you can send <a href="https://www.coinbase.com/buy-ethereum?locale=en-US">Ethereum</a> or ERC20 tokens to the following address.
+        <br>
+        <div class="center-align">
+          <code>0xadf06b287a6571c7971ef65c2102d9fdd3907fd5</code>
+        </div>
+        <br> I have absolutely no affiliation with Bridge Base Online, Inc or On Time Systems Incorporated.
+      </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
 </body>
 
 </html>

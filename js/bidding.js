@@ -1,5 +1,7 @@
 var currentBid = ""
 var currentCards = ""
+var nextBid = "";
+var dealer = "";
 
 $(function() {
     updateCards()
@@ -34,6 +36,18 @@ $(function() {
         updateBids()
     });
 });
+
+function randomCards() {
+    var elements = ""
+    for (suit of ["s", "h", "c", "d"]) {
+        for (rank of ["2", "3", "4", "5", "6", "7", "8", "9", "t", "j", "q", "k", "a"]) {
+            elements += "#bidding-" + suit + rank + ","
+        }
+    }
+    elements = elements.substr(0, elements.length - 1)
+    $(elements).shuffle()
+    updateCards()
+}
 
 function updateCards() {
     currentCards = ""
@@ -78,6 +92,7 @@ function updateBids() {
         bids: [],
         name: "west"
     }]
+    dealer = ""
     for (obj of bids) {
         var name = obj.name
         var bid = obj.bids
@@ -94,6 +109,9 @@ function updateBids() {
                 continue
             }
             var id = target.attr("id")
+            if (dealer == "" && index == 0) {
+                dealer = name
+            }
             if (id.includes("pass")) {
                 bid.push("p")
                 continue
@@ -139,8 +157,12 @@ function updateBids() {
                 continue
             }
             if (lastbid == obj.name) {
-                console.log(obj.name + " bid out of order! This will confuse GIB.")
-                // Display on screen warning, change bid button color
+                console.log(obj.name)
+                $("#bidding-selection").attr("class", "")
+                $("#bidding-bid").text("")
+                $("#bidding-meaning").text("")
+                $("#bidding-error").text(obj.name.charAt(0).toUpperCase() + obj.name.slice(1) + " bid out of order! This will confuse GIB!")
+                return
             }
             currentBid = currentBid + obj.bids[i] + "-"
             lastbid = obj.name
@@ -150,27 +172,136 @@ function updateBids() {
             nextbid = bids[bidIndex].name
         }
         if (lastbid == "") {
-            console.log("No players bid first! Error!")
             currentBid = ""
-            // Display on screen warning, disable bid button
+            $("#bidding-error").text("GIB cannot bid first! If you want GIB to open, bid pass fist!")
             return
         }
     }
     if (currentBid.includes("p-p-p-p")) {
-        console.log("All players passed during a round! This will confuse GIB.")
-        // Display on screen warning, change bid button color
+        $("#bidding-selection").attr("class", "")
+        $("#bidding-bid").text("")
+        $("#bidding-meaning").text("")
+        $("#bidding-error").text("All players passed during a round! This will confuse GIB!")
+        return
     }
     currentBid = currentBid.substr(0, currentBid.length - 1)
+    nextBid = nextbid
     console.log("Current bid is " + currentBid)
     console.log("Next to bid is " + nextbid)
+    console.log("Dealer is " + dealer)
+    callGIB()
+}
+
+function callGIB() {
+    var sc = "tp"
+    var pov = "N"
+    if (nextBid == "south") {
+        pov = "S"
+    } else if (nextBid == "west") {
+        pov = "W"
+    } else if (nextBid == "east") {
+        pov = "E"
+    }
+    var d = "N"
+    if (dealer == "south") {
+        d = "S"
+    } else if (dealer == "west") {
+        d = "W"
+    } else if (dealer == "east") {
+        d = "E"
+    }
+    var request = "http://gibrest.bridgebase.com/u_bm/robot.php?sc=" + sc + "&pov=" + pov + "&d=" + d + "&v=-&" + currentCards + currentBid
+    console.log(request)
+    httpGet(request, (responseText) => {
+        var bid = "p"
+        var suit = ""
+        var parser = new DOMParser();
+        var xml = parser.parseFromString(responseText, "text/xml")
+        var value = xml.getElementsByTagName("r")[0]
+        var meaning = ""
+        console.log(xml)
+        if (value == undefined) {
+            $("#bidding-selection").attr("class", "")
+            $("#bidding-bid").text("")
+            $("#bidding-meaning").text("")
+            $("#bidding-error").text("You did something to confuse GIB! Is your bid order legal?")
+            return
+        }
+        if (value.getAttribute("type") == "bid") {
+            var b = value.getAttribute("bid").toLowerCase()
+            console.log(b)
+            if (b != "p") {
+                if (b == "xx") {
+                    bid = "xx";
+                } else if (b == "x") {
+                    bid = "x"
+                } else if (b.includes("c")) {
+                    suit = "clubs"
+                    bid = b.substr(0, 1)
+                } else if (b.includes("d")) {
+                    suit = "diamonds"
+                    bid = b.substr(0, 1)
+                } else if (b.includes("h")) {
+                    suit = "hearts"
+                    bid = b.substr(0, 1)
+                } else if (b.includes("s")) {
+                    suit = "spades"
+                    bid = b.substr(0, 1)
+                } else if (b.includes("n")) {
+                    suit = "notrump"
+                    bid = b.substr(0, 1)
+                }
+            }
+        }
+        if(value.getAttribute("meaning") != undefined) {
+          meaning = value.getAttribute("meaning").replace("!H", "\u2665").replace("!S", "\u2660").replace("!D", "\u2666").replace("!C", "\u2663")
+        }
+        $("#bidding-error").text("")
+        $("#bidding-bid").text("GIB bid for " + nextBid + ":")
+        $("#bidding-meaning").text(meaning)
+        if (bid == "p") {
+            $("#bidding-selection").attr("class", "selecttile bid-pass bid-pass-symbol")
+        } else if (bid == "x") {
+            $("#bidding-selection").attr("class", "selecttile bid-pass bid-x bid-x-symbol")
+        } else if (bid == "xx") {
+            $("#bidding-selection").attr("class", "selecttile bid-pass bid-xx bid-xx-symbol")
+        } else {
+            $("#bidding-selection").attr("class", "selecttile bid-" + suit + " bid-" + suit + "-symbol " + "bid-" + suit + "-" + bid)
+        }
+    })
 }
 
 function httpGet(theUrl, callback) {
-    var xmlHttp = new XMLHttpRequest();
+    var xmlHttp = new XMLHttpRequest()
     xmlHttp.onreadystatechange = function() {
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-            callback(xmlHttp.responseText);
+            callback(xmlHttp.responseText)
     }
-    xmlHttp.open("GET", theUrl, true);
-    xmlHttp.send(null);
+    xmlHttp.open("GET", theUrl, true)
+    xmlHttp.send(null)
 }
+
+(function($) {
+
+    $.fn.shuffle = function() {
+
+        var allElems = this.get(),
+            getRandom = function(max) {
+                return Math.floor(Math.random() * max);
+            },
+            shuffled = $.map(allElems, function() {
+                var random = getRandom(allElems.length),
+                    randEl = $(allElems[random]).clone(true)[0];
+                allElems.splice(random, 1);
+                return randEl;
+            });
+
+        this.each(function(i) {
+            $(this).replaceWith($(shuffled[i]));
+        });
+
+        return $(shuffled);
+
+    };
+
+})(jQuery);

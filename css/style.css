@@ -62,13 +62,26 @@
   padding-top: 20px;
 }
 
-h5 {
+.headmargin {
   margin-top: -30px;
+  margin-bottom: 20px;
+}
+
+.buttonmargin {
+  margin-top: -10px;
   margin-bottom: 20px;
 }
 
 .extrawidth {
   width: 120%;
+}
+
+.error {
+  color: red;
+}
+
+.warning {
+  color: gold;
 }
 
 .cardtile {}
