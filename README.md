@@ -1,5 +1,6 @@
 # GIBAccess
 
+Easy to use API frontend for GIB - Ginsberg's Intelligent Bridgeplayer.
 ```
 GIBRest Documentation
 
